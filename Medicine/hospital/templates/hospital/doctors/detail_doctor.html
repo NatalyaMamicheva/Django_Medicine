@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Информация о докторе</title>
+    {% load static %}
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<h1>Доктор</h1>
+<form action="" method="post">{% csrf_token %}
+    <p>Фио: {{object.first_last_middle_name}}</p>
+    <p>Возраст: {{object.age}}</p>
+    <p>Должность: {{object.position}}</p>
+    <button>
+        <a class="but" href="{% url 'doctor_delete' object.pk  %}">
+            Удалить
+        </a>
+    </button>
+    <button>
+        <a class="but" href="{% url 'doctor_update' object.pk  %}">
+            Редактировать
+        </a>
+    </button>
+</form>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Список приемов в клинике</title>
+    {% load static %}
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<h1>Список приемов в клинике</h1>
+<table>
+    <thead>
+    <tr>
+        <th>&nbspДата приема&nbsp</th>
+        <th>&nbspЗаболевание&nbsp</th>
+        <th>&nbspСтоимость приема&nbsp</th>
+        <th>&nbspДоктор&nbsp</th>
+        <th>&nbspПациент&nbsp</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for d in object_list %}
+    <tr>
+        <td>
+            <a href="{% url 'reception_detail' d.pk  %}">
+                {{ d.date }}
+            </a>
+        </td>
+        <td>&nbsp{{ d.disease }}&nbsp</td>
+        <td>&nbsp{{ d.cost }}&nbsp</td>
+        <td>&nbsp{{ d.doctor_name }}&nbsp</td>
+        <td>&nbsp{{ d.patient_name }}&nbsp</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<br>
+<div>
+    <button>
+        <a class="but" href="{% url 'reception_create'  %}">
+            Добавить прием
+        </a>
+    </button>
+</div>
+<br>
+<div>
+    <button>
+        <a class="but" href="{% url 'doctors_list'  %}">
+            Список докторов
+        </a>
+    </button>
+</div>
+<br>
+<div>
+    <button>
+        <a class="but" href="{% url 'patients_list'  %}">
+            Список пациентов
+        </a>
+    </button>
+</div>
+</body>
+</html>

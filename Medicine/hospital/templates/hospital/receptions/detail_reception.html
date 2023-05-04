@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Информация о приеме</title>
+    {% load static %}
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<h1>Прием</h1>
+<form action="" method="post">{% csrf_token %}
+    <p>Дата приема: {{object.date}}</p>
+    <p>Заболевание: {{object.disease}}</p>
+    <p>Стоимость приема: {{object.cost}}</p>
+    <p>Доктор: {{object.doctor_name}}</p>
+    <p>Пациент: {{object.patient_name}}</p>
+    <button>
+        <a class="but" href="{% url 'reception_delete' object.pk  %}">
+            Удалить
+        </a>
+    </button>
+    <button>
+        <a class="but" href="{% url 'reception_update' object.pk  %}">
+            Редактировать
+        </a>
+    </button>
+</form>
+
+</body>
+</html>

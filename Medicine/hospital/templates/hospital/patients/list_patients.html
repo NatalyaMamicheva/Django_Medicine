@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Список пациентов</title>
+    {% load static %}
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<body>
+<h1>Список пациентов</h1>
+<table>
+    <thead>
+    <tr>
+        <th>&nbspФИО&nbsp</th>
+        <th>&nbspВозраст&nbsp</th>
+        <th>&nbspАдрес&nbsp</th>
+        <th>&nbspПол&nbsp</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for d in object_list %}
+    <tr>
+        <td>
+            <a href="{% url 'patient_detail' d.pk  %}">
+                &nbsp{{ d.first_last_middle_name }}&nbsp
+            </a>
+        </td>
+        <td>&nbsp{{ d.age }}&nbsp</td>
+        <td>&nbsp{{ d.address }}&nbsp</td>
+        <td>&nbsp{{ d.gender }}&nbsp</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<br>
+<div>
+    <button>
+        <a class="but" href="{% url 'patient_create'  %}">
+            Добавить пациента
+        </a>
+    </button>
+</div>
+<br>
+<div>
+    <button>
+        <a class="but" href="{% url 'doctors_list'  %}">
+            Список докторов
+        </a>
+    </button>
+</div>
+<br>
+<div>
+    <button>
+        <a class="but" href="{% url 'receptions_list'  %}">
+            Список приемов
+        </a>
+    </button>
+</div>
+</body>
+</html>
